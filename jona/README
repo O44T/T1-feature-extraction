@@ -6,3 +6,5 @@ Column labels: Frame & Vertex_Pos_x & Vertex_Pos_y & Angle_1 & Angle_2 & Angle_3
       
 Final table name: T1_Angles
       This table focuses only on T1 evets positions. 
+      
+T1_Angles_Example: One line of data represents one cross.
