@@ -1,5 +1,9 @@
-# Data Video: Exp_0295. Number of frames: 13777 
+## Data Video: Exp_0295. 
+
+Number of frames: 13777 
+
 ----------------------------------------------------------------------------------------------------------
+
 ## T1 event Angles 
 
 Final frame: 4916
@@ -11,12 +15,13 @@ Angles in degree. Don't worry about negative angles!
 Final table name: T1_Angles
 
 This table focuses only on T1 events positions. 
-      
 T1_Angles_Example fig.: One line of data represents one cross. In this example, there are 4 lines.
+
 ----------------------------------------------------------------------------------------------------------
+
 ## Unbiased Angles
 
-Final frame: running in parallel 
+Final frame: running in parallel 13777
 
 Column labels: 
 
