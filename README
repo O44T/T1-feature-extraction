@@ -4,4 +4,8 @@ https://www.overleaf.com/project/5e31260554e0d80001574992
 
 Filepaths to Triton folders:
 
-<provided later>
+/scratch/work/tainioo2/t1_prl_example.py
+
+/scratch/phys/project/csm/2019/t1_prl/leevi/cnn_input/biased_screened_vertex_train_data/Xdata.npy
+
+/scratch/phys/project/csm/2019/t1_prl/leevi/cnn_input/biased_screened_vertex_train_data/ydata.npy
