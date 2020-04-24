@@ -1,1 +1,4 @@
-to be continued
+This folder contains machine learning related scripts and files.
+
+MLP.py is a multilayer perceptron, which can be run for datasets located in data/dataset_01 folder. 
+In addition, it contains scaling and optimizer options.
