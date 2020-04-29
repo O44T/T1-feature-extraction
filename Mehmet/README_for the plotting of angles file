@@ -1,0 +1,6 @@
+The plotting_of_angles file contains the script for plotting T1 events 
+
+IMPORTANT : The only thing that need to be taken into account is to adjust the start, stop and step number before running the script(Line 33).
+
+If the image number starts with 301 and ends with 499 then start point must be selected as 301 , stop point must be 499 and step is 1.
+
