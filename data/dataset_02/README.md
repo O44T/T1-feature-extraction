@@ -6,7 +6,7 @@ Total number of frames: 13777
 
 Total number of frames in dataset_02: 1992
 
-**Important to mention:** in this data set, zero value as angle is possible.
+**Important to mention:** in this data set, zero value as angle is possible. There are 4 columns of angles. 
   
 Column labels:
 
