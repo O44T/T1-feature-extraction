@@ -12,24 +12,98 @@ from matplotlib import pyplot
 
 import numpy as np
 
+
 def main():
-    filepath1 = 'training_set_01.txt'
-    filepath2 = 'test_set_01.txt'
+    print('Welcome to the Bubble Vertex multilayer perceptron program!')
+    filenum = input('Please insert the number of files to be processed (1 for single file, 2 for training and test files): ')
+    if int(filenum) == 2:
+        filepath1=input('\nGive the name of the training set file: ')
+        print('Training file name: ',filepath1)
+        filepath2=input('\nGive the name of the test set file: ')
+        print('Test file name: ',filepath2)
+    elif int(filenum) == 1:
+        filepath=input('\nGive the name of the data file: ')
+        print('Data file name: ',filepath)
+    else:
+        print('Invalid number of files!')
+        exit()
     
-    print('Training file: ',filepath1)
-    print('Testing file: ',filepath2)
+    
     print('\nStep #1: We separate the data into train and test sets.')
-    input_train = np.loadtxt(filepath1, usecols=(3,4,5,6))
-    labels_train = np.loadtxt(filepath1, usecols=(8))
-    input_test = np.loadtxt(filepath2, usecols=(3,4,5,6))
-    labels_test = np.loadtxt(filepath2, usecols=(8))
-    input_train[input_train == 0] = -1
-    input_test[input_test == 0] = -1
-    print('\nCreating opposing version of label columns..')
-    logical_train = 1 - labels_train
-    logical_test = 1 - labels_test
-    labels_train = np.vstack((labels_train, logical_train)).T
-    labels_test = np.vstack((labels_test, logical_test)).T
+    
+    if int(filenum) == 1:
+        inputs = np.loadtxt(filepath, usecols=(3,4,5,6))
+        labels = np.loadtxt(filepath, usecols=(7))
+        
+        T1_counter=0
+        for i in labels:
+            if i == 1:
+                T1_counter=T1_counter+1
+        print('\nNumber of T1-events: ',T1_counter)
+        print('\nNumber of labels: ',len(labels))
+        print('\n Portion of T1-events in raw data: ',T1_counter/len(labels))
+        permission='No'
+        permission = input('\nUse all positive data? Type "Yes", "No" or "Yes, limited": ')
+        if permission == 'Yes':
+            data_bulk = np.loadtxt(filepath, usecols=(3,4,5,6,7))
+            positive_data = data_bulk[np.where(data_bulk[:,4]==1)]
+            negative_data = data_bulk[np.where(data_bulk[:,4]==0)]
+            negative_data = negative_data[1:2280,:]
+            data_bulk = np.vstack((positive_data,negative_data))
+            
+            inputs = data_bulk[:,[0,1,2,3]]
+            labels = data_bulk[:,[4]]
+            T1_counter = 0
+            for i in labels:
+                if int(i) == 1:
+                    T1_counter=T1_counter+1
+            print('\nNumber of T1-events: ',T1_counter)
+            print('\nNumber of labels: ',len(labels))
+            print('\n Portion of T1-events in pre-processed data: ',T1_counter/len(labels))
+            logical_labels = 1-labels
+            labels = np.hstack((labels, logical_labels))
+        elif permission == 'Yes, limited':
+            T1_num = input('How many T1-events do you want to use? Write your answer here: ')
+            data_bulk = np.loadtxt(filepath, usecols=(3,4,5,6,7))
+            positive_data = data_bulk[np.where(data_bulk[:,4]==1)]
+            positive_data = positive_data[1:int(T1_num),:]
+            negative_data = data_bulk[np.where(data_bulk[:,4]==0)]
+            negative_data = negative_data[1:2280,:]
+            data_bulk = np.vstack((positive_data,negative_data))
+            
+            inputs = data_bulk[:,[0,1,2,3]]
+            labels = data_bulk[:,[4]]
+            T1_counter = 0
+            for i in labels:
+                if int(i) == 1:
+                    T1_counter=T1_counter+1
+            print('\nNumber of T1-events: ',T1_counter)
+            print('\nNumber of labels: ',len(labels))
+            print('\n Portion of T1-events in pre-processed data: ',T1_counter/len(labels))
+            logical_labels = 1-labels
+            labels = np.hstack((labels, logical_labels))
+            
+            
+            
+        
+        print('\nCreating opposing version of label columns..')
+        if permission == 'No':
+            logical_labels = 1 - labels
+            labels = np.vstack((labels, logical_labels)).T
+        input_train, input_test, labels_train, labels_test = train_test_split(inputs, labels, test_size=0.25, random_state=42)
+        
+    else:
+        input_train = np.loadtxt(filepath1, usecols=(3,4,5,6))
+        labels_train = np.loadtxt(filepath1, usecols=(8))
+        input_test = np.loadtxt(filepath2, usecols=(3,4,5,6))
+        labels_test = np.loadtxt(filepath2, usecols=(8))
+        input_train[input_train == 0] = -1
+        input_test[input_test == 0] = -1
+        print('\nCreating opposing version of label columns..')
+        logical_train = 1 - labels_train
+        logical_test = 1 - labels_test
+        labels_train = np.vstack((labels_train, logical_train)).T
+        labels_test = np.vstack((labels_test, logical_test)).T
     print('Inputs train shape: ',input_train.shape)
     print('Inputs test shape: ',input_test.shape)
     print('Labels train shape: ',labels_train.shape)
