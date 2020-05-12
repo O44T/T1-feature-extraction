@@ -17,7 +17,7 @@ Images: Check folder data/dataset_02. There are 9 parts: images.part%.rar. Frame
             <th colspan=2>Vertex</th>
             <th colspan=4>Film Angles</th>
             <th colspan=4>Film Curvature</th>
-            <th>T1 Orientation</th>
+            <th>Orientation</th>
             <th>T1 event</th>
         </tr>
     </thead>
@@ -39,3 +39,11 @@ Images: Check folder data/dataset_02. There are 9 parts: images.part%.rar. Frame
         </tr>
     </tbody>
 </table>
+
+### Film angles and curvatures
+
+### Orientation
+
+### T1 event 
+
+    T1 event yes  = 1 & T1 event no  = 0
