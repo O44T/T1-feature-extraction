@@ -4,7 +4,7 @@ Video: Exp_0295
 
 Total number of frames video: 13777 
 
-Total number of frames in dataset_03: 1923
+Total number of frames in dataset_03: 1973
 
 Images: Check folder data/dataset_02. There are 9 parts: images.part%.rar. Frames 20 - 1993
   
