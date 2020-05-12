@@ -6,7 +6,7 @@ Total number of frames video: 13777
 
 Total number of frames in dataset_03: 1973
 
-Images: Check folder [dataset_02](https://github.com/O44T/T1-feature-extraction/tree/master/data/dataset_02). There are 9 parts: images.part%.rar. Frames 20 - 1993
+Images: Check folder [data/dataset_02](https://github.com/O44T/T1-feature-extraction/tree/master/data/dataset_02). There are 9 parts: images.part%.rar. Frames 20 - 1993
   
 ### Column labels
     
@@ -42,8 +42,8 @@ Images: Check folder [dataset_02](https://github.com/O44T/T1-feature-extraction/
 
 #### Film angles and curvatures
 
-### Orientation
+#### Orientation
 
-### T1 event 
+#### T1 event 
 
     T1 event yes = 1 | T1 event no = 0
