@@ -8,11 +8,9 @@ Total number of frames in *dataset_03*: 1973
 
 **Images:** Check folder [data/dataset_02](https://github.com/O44T/T1-feature-extraction/tree/master/data/dataset_02 "Images"). There are 9 parts: images.part%.rar. Frames 20 - 1993
 
-<div style="text-align:center;background-color:lightblue;border:5px outset red"><kbd>
-    <div style="text-align:center"><img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_03/AllInfo.jpg" width = "500" /></div> <div style="text-align:center">
+<div style="text-align:center;display: block;><kbd>
+    <div style="text-align:center;background-color:blue;border:5px outset red""><img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_03/AllInfo.jpg" width = "500" /></div> <div style="text-align:center">
 </kbd /></div>
-    
-![](https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_03/AllInfo.jpg)
 
 ### Column labels
     
