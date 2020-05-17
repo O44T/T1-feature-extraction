@@ -6,7 +6,9 @@ This page contains how to draw curved lines
 
 the script is modified to draw curved lines where a T1 event occurs. The start, stop and step points must be adjusted in advance of running the script, for example there is a dataset file and the first frame name is im000301 and the last frame name is im000499 then the following order below must be followed,
 
-**Start point = 301**\n**Stop point = 499 **\n**Step point = 1**
+**Start point = 301**
+**Stop point = 499 **
+**Step point = 1**
 
 
 
