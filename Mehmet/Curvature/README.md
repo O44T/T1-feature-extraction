@@ -11,7 +11,7 @@ the script is modified to draw curved lines where a T1 event occurs. The start, 
 - Step point = 1
 
 ```
-b = np.arange(start=301, stop=307, step=1, dtype=int)
+b = np.arange(start=301, stop=499, step=1, dtype=int)
 ```
 ## How to get the curved lines
 ```
