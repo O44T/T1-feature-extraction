@@ -60,6 +60,6 @@ Using the four bubbles that close the central vertex, the eigenvectors are calcu
 
 #### T1 event 
 
-The last column in the table points out whetever or not the 4-fold vertex is a T1 event. 
+The last column in the table points out whether or not the 4-fold vertex is a T1 event. 
 
     T1 event yes = 1 | T1 event no = 0
