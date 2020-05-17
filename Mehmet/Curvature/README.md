@@ -37,7 +37,7 @@ b = np.arange(start=301, stop=307, step=1, dtype=int)
 - 3.0600000e+02 4.5800000e+02 5.8900000e+02 -127 -65 -303 -240 0.0012 0.0012 -0.0045 0.0015
 
 The order of the columns is as follows; 
-Frame nanme, x0, y0, angle1, angle2, angle3, angle4, curvature1, curvature2, curvature3, curvature4
+Frame name, x0, y0, angle1, angle2, angle3, angle4, curvature1, curvature2, curvature3, curvature4
 
 for the healtier results Frame name, x0, y0, angle between curved lines and x axis and the curvature of each lines are needed.
 
