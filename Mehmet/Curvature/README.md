@@ -2,7 +2,7 @@
 
 This page contains how to draw curved lines
 
-## How  the script works
+## How  the node_plotting script works
 
 the script is modified to draw curved lines where a T1 event occurs. The start, stop and step points must be adjusted in advance of running the script, for example there is a dataset file and the first frame name is im000301 and the last frame name is im000499 then the following order below must be followed,
 
@@ -28,7 +28,7 @@ b = np.arange(start=301, stop=307, step=1, dtype=int)
  in the above script x0 and y0 are the coordinate of the t1 event occurs, the angle between curved lines and x axis is defined as angle.
  for the next step the created curved lines plotted on the top of the images.
  
- ## What the script requires 
+ ## What the node_plotting script requires 
  
  Firstly the script has been  executed according to below data text file order,
 
