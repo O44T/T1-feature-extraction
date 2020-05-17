@@ -28,13 +28,17 @@ b = np.arange(start=301, stop=307, step=1, dtype=int)
  in the above script x0 and y0 are the coordinate of the t1 event occurs, the angle between curved lines and x axis is defined as angle.
  for the next step the created curved lines plotted on the top of the images.
  
- ## What it requires 
+ ## What the script requires 
  
  Firstly the script has been  executed according to below data text file order,
-- Frame name          x0         y0          a1  a2   a3   a4   cur1     cur2   cur3  cur4
+
 - 3.0500000e+02 5.6000000e+01 4.9100000e+02 -78 -10 -255 -192 -0.0045 -0.0005 0.0012 0.0012
 - 3.0600000e+02 5.6000000e+01 4.9100000e+02 -78 -10 -255 -192 -0.0045 -0.0005 0.0012 0.0012
 - 3.0600000e+02 4.5800000e+02 5.8900000e+02 -127 -65 -303 -240 0.0012 0.0012 -0.0045 0.0015
+
+Columns order is like that; Frame nanme, x0, y0, angle1, angle2, angle3, angle4, curvature1, curvature2, curvature3, curvature4
+
+for the healtier results Frame name, x0, y0, angle between curved lines and x axis and the curvature of each lines are needed.
 
 
 
