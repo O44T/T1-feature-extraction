@@ -6,9 +6,40 @@ This page contains how to draw curved lines
 
 the script is modified to draw curved lines where a T1 event occurs. The start, stop and step points must be adjusted in advance of running the script, for example there is a dataset file and the first frame name is im000301 and the last frame name is im000499 then the following order below must be followed,
 
-**Start point = 301**,
-**Stop point = 499** and
-**Step point = 1**
+- Start point = 301
+- Stop point = 499
+- Step point = 1
+
+```
+b = np.arange(start=301, stop=307, step=1, dtype=int)
+```
+## How to get the curved lines
+```
+ def getCurve(x0,y0,angle,curvature):
+                    t = np.arange(35)
+                    x = t
+                    y = curvature * t*t
+                
+                    x_new = x*math.cos(angle*np.pi/180) - y*math.sin(angle*np.pi/180) + x0
+                    y_new = x*math.sin (angle*np.pi/180) + y*math.cos (angle*np.pi/180) + y0
+                
+                    plt.plot(x_new, y_new, 'r', linewidth = 6)
+ ```
+ in the above script x0 and y0 are the coordinate of the t1 event occurs, the angle between curved lines and x axis is defined as angle.
+ for the next step the created curved lines plotted on the top of the images.
+ 
+ ## What it requires 
+ 
+ Firstly the script has been  executed according to below data text file order,
+- Frame name          x0         y0          a1  a2   a3   a4   cur1     cur2   cur3  cur4
+- 3.0500000e+02 5.6000000e+01 4.9100000e+02 -78 -10 -255 -192 -0.0045 -0.0005 0.0012 0.0012
+- 3.0600000e+02 5.6000000e+01 4.9100000e+02 -78 -10 -255 -192 -0.0045 -0.0005 0.0012 0.0012
+- 3.0600000e+02 4.5800000e+02 5.8900000e+02 -127 -65 -303 -240 0.0012 0.0012 -0.0045 0.0015
+
+
+
+
+
 
 
 
