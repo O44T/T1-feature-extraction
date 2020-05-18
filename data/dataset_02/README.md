@@ -2,9 +2,11 @@
 
 Video: Exp_0295 
 
-Total number of frames: 13777 
+Total number of frames video: 13777 
 
-Total number of frames in dataset_02: 1992
+Total number of frames in dataset_02: 1973
+
+Images: images.part%.rar 9 parts. Frames 20 - 1993
 
 **Important to mention:** in this data set, zero value as angle is possible. There are 4 columns of angles. 
   
