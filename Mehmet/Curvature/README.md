@@ -1,11 +1,21 @@
 # Curved lines
 
-This page contains how to draw curved lines
+This page contains 2 different python files named node_plotting.py and main.py respectively. The node plotting  contains script how to draw curvature on tap of images. Main file contains all constant values that node_plotting file needs, so that nothing will be changed in node_plotting file.
 
-## How  the node_plotting script works
+## What the node_plotting script contains
 
-the script is modified to draw curved lines where a T1 event occurs. The start, stop and step points must be adjusted in advance of running the script, for example there is a dataset file and the first frame name is im000301 and the last frame name is im000499 then the following order below must be followed,
+the script is modified to draw curved lines where a T1 event occurs and plots all images with created curved lines.
 
+## How  the main script works
+
+This script is created to change the main variables related to node_plotting.py file without modifying the node_plotting.py file.
+These mainvariables are as follows with definition;
+**mypath** is path to dataset where are the images in
+**filename** is path to output folder where the  images with red cross go
+**b** is a virtual array to get correct curvature on top of images
+**Unique** is used for removing duplicates in data file in order to compare image and text file smootly
+
+**b** values
 - Start point = 301
 - Stop point = 499
 - Step point = 1
