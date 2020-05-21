@@ -10,12 +10,13 @@ the script is modified to draw curved lines where a T1 event occurs and plots al
 
 This script is created to change the main variables related to node_plotting.py file without modifying the node_plotting.py file.
 These mainvariables are as follows with definition;
-**mypath** is path to dataset where are the images in
-**filename** is path to output folder where the  images with red cross go
-**b** is a virtual array to get correct curvature on top of images
-**Unique** is used for removing duplicates in data file in order to compare image and text file smootly
+- **mypath** is path to dataset where are the images in
+- **filename** is path to output folder where the  images with red cross go
+- **b** is a virtual array to get correct curvature on top of images
+- **Unique** is used for removing duplicates in data file in order to compare image and text file smootly
 
-**b** values
+**b** values need to be taken into account before performing the script. Start point referes to the first image number, stop point referes to the last image number and step point can be selected 1 if if the ranking is consecutive. 
+
 - Start point = 301
 - Stop point = 499
 - Step point = 1
