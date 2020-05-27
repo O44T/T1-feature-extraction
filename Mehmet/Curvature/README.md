@@ -26,15 +26,16 @@ b = np.arange(start=301, stop=499, step=1, dtype=int)
 ```
 ## How to get the curved lines
 ```
- def getCurve(x0,y0,angle,curvature):
-                    t = np.arange(35)
-                    x = t
-                    y = curvature * t*t
-                
-                    x_new = x*math.cos(angle*np.pi/180) - y*math.sin(angle*np.pi/180) + x0
-                    y_new = x*math.sin (angle*np.pi/180) + y*math.cos (angle*np.pi/180) + y0
-                
-                    plt.plot(x_new, y_new, 'r', linewidth = 6)
+def getCurve(x0,y0,angle,curvature): 
+    x = t-np.sin(t)
+    y = curvature*(1-np.cos(t))
+                        
+    x_new = x*math.cos(angle*np.pi/180) - y*math.sin(angle*np.pi/180) + x0
+    y_new = x*math.sin (angle*np.pi/180) + y*math.cos (angle*np.pi/180) + y0
+    if data[i-1,12] == 1:
+        plt.plot(x_new, y_new, 'r', linewidth = 4)
+    else:
+        plt.plot(x_new, y_new, 'b', linewidth = 4)
  ```
  in the above script x0 and y0 are the coordinate of the t1 event occurs, the angle between curved lines and x axis is defined as angle.
  for the next step the created curved lines plotted on the top of the images.
@@ -54,11 +55,4 @@ for the healtier results Frame name, x0, y0, angle between curved lines and x ax
 
 ## Some images after running the script 
 
-
-
-
-
-
-
-
-<img src="https://user-images.githubusercontent.com/63856517/82141615-be392880-983f-11ea-8e3e-98d819d0fa5d.jpg" width="300" height="300" /> <img src="https://user-images.githubusercontent.com/63856517/82141738-81216600-9840-11ea-91ba-793864becb77.jpg" width="300" height="300" /> <img src="https://user-images.githubusercontent.com/63856517/82141796-e07f7600-9840-11ea-8fca-45fb8d519c20.PNG" width="100" height="100" />
+<img src="https://user-images.githubusercontent.com/63856517/83022257-e7be3500-a033-11ea-974e-db6a756e099a.jpg" width="300" height="300" /> <img src="https://user-images.githubusercontent.com/63856517/83022320-03c1d680-a034-11ea-92cd-4ff1a824ed1f.jpg" width="300" height="300" />  <img src="https://user-images.githubusercontent.com/63856517/82141796-e07f7600-9840-11ea-8fca-45fb8d519c20.PNG" width="100" height="100" />
