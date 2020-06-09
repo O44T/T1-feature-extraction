@@ -52,6 +52,8 @@ The angle is defined as the arctan between the central point and each of the fou
 
 <img src = "https://raw.githubusercontent.com/O44T/T1-feature-extraction/master/data/dataset_03/sketch/4FoldVertex.png" width = "200" style="background-color:blue;" />  <img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_03/sketch/FilmsCurvature.png" width = "200">
 
+![Curvature Plot](https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_03/sketch/testAnimated.gif)
+
 #### Orientation
 
 Using the four bubbles that close the central vertex, the eigenvectors are calculated to determine the major axis. The orientation is defined according to the direction of the major axis with respect to the [velocity field](https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_03/sketch/VectorField.jpg). The angle between those two vectors is <th>&beta;</th>.
