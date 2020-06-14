@@ -40,14 +40,12 @@ The columns are:
     </tbody>
 </table>
 
-#### Film angles and curvatures
+#### Nodes
 
-Each 4-fold vertex is conected to four films. For each of those four films, their angles and curvatures were calculated. 
-The angle is defined as the arctan between the central point and each of the four nodes (blue dots). The film curvature is determined as the osculating circle using the previous two points and the central point in the film.
+For each film 
+The 4-fold vertex is label as (x_c,y_c), columns 2 and 3. The codes detect those four films at the 4-fold node (see Fig. a). Then, there are two dots for each film, one at the middle (x_m,y_m) and the other at the end of the film (x_e,y_e) (see Fig. b). The groups of 4 values (x_m,y_m,x_e,y_e) are concatenated next to each other. As a result, columns from 3 to 19 are the nodes on the film. 
 
-<img src = "https://raw.githubusercontent.com/O44T/T1-feature-extraction/master/data/dataset_03/sketch/4FoldVertex.png" width = "200" style="background-color:blue;" />  <img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_03/sketch/FilmsCurvature.png" width = "200">
-
-![Curvature Plot](https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_03/sketch/testAnimated.gif)
+<img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_04/sketch/Dots.png" width = "700" style="background-color:blue;" /> 
 
 #### Orientation
 
