@@ -4,8 +4,7 @@
 
 Total number of frames video: 13777 
 
-Frames in *dataset_03*: 20 - 1993   
-Frames in *dataset_03_1*: 20 - 4000
+Frames in *dataset_04*: 20 - 7000
 
 **Images:** Check folder [data/dataset_02](https://github.com/O44T/T1-feature-extraction/tree/master/data/dataset_02 "Images"). There are 9 parts: images.part%.rar. Frames 20 - 1993
 
@@ -13,7 +12,7 @@ Frames in *dataset_03_1*: 20 - 4000
 
 ### Column labels
 
-dataset_03 is a 13-column table containing information of those 4-fold nodes that appear in the foam flow. 
+dataset_04 is a 21-column table containing information of those 4-fold nodes that appear in the foam flow. 
 The columns are:
     
 <table>
@@ -21,8 +20,7 @@ The columns are:
         <tr>
             <th>Frame Number</th>
             <th colspan=2>Vertex</th>
-            <th colspan=4>Film Angles</th>
-            <th colspan=4>Film Curvature</th>
+            <th colspan=4>Nodes; i = {1,4}</th>
             <th>Orientation</th>
             <th>T1 event</th>
         </tr>
@@ -32,14 +30,10 @@ The columns are:
             <th>index</th>
             <th>x_c</th>
             <th>y_c</th>
-            <th>&alpha;_1</th>
-            <th>&alpha;_2</th>
-            <th>&alpha;_3</th>
-            <th>&alpha;_4</th>
-            <th>&kappa;_1</th>
-            <th>&kappa;_2</th>
-            <th>&kappa;_3</th>
-            <th>&kappa;_4</th>
+            <th>x_{m,i}</th>
+            <th>y_{m,i}</th>
+            <th>x_{e,i}</th>
+            <th>y_{e,i}</th>
             <th>&beta;</th>
             <th>yes or no</th>
         </tr>
