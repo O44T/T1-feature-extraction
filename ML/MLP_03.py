@@ -17,6 +17,7 @@ from sklearn.datasets import fetch_openml
 import random
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 
 
 def main():
@@ -45,13 +46,12 @@ def main():
         print('\nNumber of T1-events: ',T1_counter)
         print('\nNumber of labels: ',len(labels))
         print('\n Portion of T1-events in raw data: ',T1_counter/len(labels))
-        permission='No'
-        permission = input('\nUse specified data? Type "Yes, limited" or "No"": ') 
-        if permission == 'Yes, limited':
+        permission = input('\nUse specified data? Type "Yes" or "No" (For now, only Yes works properly)": ') 
+        if permission == 'Yes':
             T1_num = input('How many T1-events do you want to use? Write your answer here: ')
             no_T1_num = input('How many non-T1-events do you want to use? Write your answer here: ')
             data_bulk = np.loadtxt(filepath, usecols=(3,4,5,6,7,8,9,10,11,12))
-            scaling_permission = input('Do you want to include input scaling? Type "yes" or "no": ')
+            scaling_permission = input('Do you want to include input scaling (StandardScaler)? Type "yes" or "no": ')
             positive_data = data_bulk[np.where(data_bulk[:,9]==1)]
             pos_index=random.randint(1,int(positive_data.shape[0]+1))
             if pos_index >= int(positive_data.shape[0]-int(T1_num)):
@@ -62,7 +62,7 @@ def main():
             if neg_index <= int(negative_data.shape[0]-int(no_T1_num)):
                 neg_index=1
             negative_data = negative_data[neg_index:neg_index+int(no_T1_num),:]
-            print(negative_data.shape)
+            
             data_bulk = np.vstack((positive_data,negative_data))
             np.random.shuffle(data_bulk)
             labels = data_bulk[:,[9]]
@@ -74,8 +74,8 @@ def main():
                 print('\nScaling training inputs complete.')
             else:
                 print('\nInput data is not scaled.')
-            inputs = data_bulk[:,[0,1,2,3,4,5,6,7]] #Original: 0,1,2,3,4,5,6,7,8
-            print(inputs[0])
+            inputs = data_bulk[:,[0,1,2,3,4,5,6,7,8]] #Original: 0,1,2,3,4,5,6,7,8
+            
             randomize_labels = input('Randomize label column? Write "Yes" or "No": ')
             if randomize_labels == 'Yes':
                 np.random.shuffle(labels)
@@ -126,8 +126,8 @@ def main():
                 print('\nNumber of T1-events: ',T1_counter)
                 print('\nNumber of labels: ',len(labels_2))
                 print('\n Portion of T1-events in pre-processed data: ',T1_counter/len(labels_2))
-                inputs_2 = data_bulk_2[:,[0,1,2,3,4,5,6,7]] #Original: 0,1,2,3,4,5,6,7,8
-                print(inputs_2[0])
+                inputs_2 = data_bulk_2[:,[0,1,2,3,4,5,6,7,8]] #Original: 0,1,2,3,4,5,6,7,8
+                
                 logical_labels_2 = 1-labels_2
                 labels_2 = np.hstack((labels_2, logical_labels_2))
         print('\nCreating opposing version of label columns..')
@@ -170,31 +170,36 @@ def main():
     imp = imp.fit(input_train)
     input_train = imp.transform(input_train)
     input_test = imp.transform(input_test)
-    clf = MLPClassifier(solver=used_solver, alpha=1e-5, hidden_layer_sizes=(9,10,11,8,), random_state=0, max_iter=20000, shuffle=True)   
+    clf = MLPClassifier(solver=used_solver, alpha=1e-5, hidden_layer_sizes=(14,20,8,4,), random_state=0, max_iter=20000, shuffle=True)   
+    #9,10,11,8,
     #9,18,36,72,144,288,144,72,36,18,9,4,
-    pca = KernelPCA(n_components=2, kernel="poly", degree=1, eigen_solver='arpack', random_state=0)
-    
+    #pca = KernelPCA(n_components=2, kernel="poly", degree=1, eigen_solver='arpack', random_state=0)
+    pca = PCA(n_components=2, svd_solver='arpack', random_state=0)
     principalComponents = pca.fit_transform(input_train)
-    print(principalComponents)
-    print(labels_train[:,0].reshape(-1,1).ravel().shape)
     finalDf =  np.hstack((principalComponents, labels_train))
-    #print("Data variance ratio after PCA tranform: ",pca.explained_variance_ratio_)
+    print("\n------------------------------------------------------------")
+    print("\nNumber of features in the original data: ",pca.n_features_)
+    print(pd.DataFrame(pca.components_.transpose(),index=['angle1','angle2','angle3','angle4','curvature1','curvature2','curvature3','curvature4','orientation'],columns = ['PC-1','PC-2']))
+    print("Data variance ratio after PCA tranform: ",pca.explained_variance_ratio_)
+    print("\n------------------------------------------------------------")
     vis_pca = input('\nVisualize PCA components? Type "Yes" or "No": ')
     if vis_pca == "Yes":
         fig = plt.figure(figsize = (8,8))
         ax = fig.add_subplot(1,1,1) 
         ax.set_xlabel('Principal Component 1', fontsize = 15)
         ax.set_ylabel('Principal Component 2', fontsize = 15)
-        ax.set_title('2 component PCA', fontsize = 20)
+        ax.set_title('PCA: 2 component projection', fontsize = 20)
         targets = [0, 1]
-        colors = ['r', 'b']
+        colors = ['orangered', 'dodgerblue']
         for target, color in zip(targets,colors):
             finalDf_2 = finalDf[np.where(finalDf[:,2] == target)]
             if color == 'r':
-                alfa = 0.67
+                alfa = 0.50
+                normi = 1.0
             else:
-                alfa = 0.33
-            ax.scatter(finalDf_2[:,0], finalDf_2[:,1], c = color, alpha=alfa, marker='o', s=0.80)
+                alfa = 0.50
+                normi=1.0
+            ax.scatter(finalDf_2[:,0], finalDf_2[:,1], c = color, alpha=alfa, marker='o', s=5.0, norm=normi)
         ax.legend(targets)
         ax.grid()
         plt.show()
@@ -207,6 +212,7 @@ def main():
         predicted = clf.predict(input_test)
         conf_matrix = metrics.confusion_matrix(labels_test[:,0].reshape(-1,1),predicted)
         tn, fp, fn, tp = metrics.confusion_matrix(labels_test[:,0].reshape(-1,1), predicted).ravel()
+        print("\n------------------------------------------------------------")
         print('Fitting of training data complete.')
         print('Predicting based on test data.')
         print("\nTraining set score: %f" % clf.score(input_train, labels_train[:,0].reshape(-1,1)))
@@ -218,4 +224,5 @@ def main():
         print('TP: ',tp)
         print('FN: ',fn)
         print('FP:' ,fp)
+        print("\n------------------------------------------------------------")
 main()
