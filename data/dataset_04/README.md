@@ -48,6 +48,12 @@ The 4-fold vertex is label as (x_c,y_c), columns 2 and 3. The codes detect those
 
 <img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_04/sketch/Dots.png" width = "700" style="background-color:blue;" /> 
 
+#### Plot films
+
+As it was explained before (see [dataset_03](https://github.com/O44T/T1-feature-extraction/tree/master/data/dataset_03 "dataset_03")), curved films are fitted with a circle while a straight line is used for those film whose curvature is null. The following figure shows six different frames where films were plotted. 
+
+<img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_04/sketch/PlotCurvedExample.jpg" width = "900" style="background-color:blue;" /> 
+
 #### Orientation
 
 Using the four bubbles that close the central vertex, the eigenvectors are calculated to determine the major axis. The orientation is defined according to the direction of the major axis with respect to the [velocity field](https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_03/sketch/VectorField.jpg). The angle between those two vectors is <th>&beta;</th>.
