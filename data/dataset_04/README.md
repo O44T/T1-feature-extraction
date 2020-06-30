@@ -48,7 +48,7 @@ The 4-fold vertex is label as (x_c,y_c), columns 2 and 3. The codes detect those
 
 <img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_04/sketch/Dots.png" width = "700" style="background-color:blue;" /> 
 
-#### Plot films
+##### Plot films: example 
 
 As it was explained before (see [dataset_03](https://github.com/O44T/T1-feature-extraction/tree/master/data/dataset_03 "dataset_03")), curved films are fitted with a circle while a straight line is used for those film whose curvature is null. The following figure shows six different frames where films were plotted. 
 
