@@ -38,10 +38,17 @@ def main():
     data_manipulation = input('Use data manipulation? Type "Yes" or "No": ')
     if data_manipulation == "Yes":
         manipulation_type = input('\nWhich manipulation type do you want to use? Type answer here: ')
-        if manipulation_type == "Angle":
+        if manipulation_type == "Angle-S1":
+            print('Calculating direct angles between end points.')
             df = feature_derivation.angle(df)
+        elif manipulation_type == "Angle-S2":
+            print('Calculating direct angles between end points AND substracting them from flow orientation.')
+            df = feature_derivation.angle(df)
+            df = feature_derivation.orientation_strategy(df)
+            
         else:
-            print('\nDesired manipulation method has not yet been implemented.')
+            print('\nDesired manipulation method has not yet been implemented. Exiting program.')
+            exit()
     else:
         print('\nData will not be manipulated in any way.')
         print('--------------------------------------------------------------------------------------')
@@ -51,9 +58,9 @@ def main():
     if int(strat) == 1:
         print('\nStratagem 1 chosen.')
         positives = df[df['label']==1]
-        positives = positives.sample(n=int(num_sample), random_state=1)
+        positives = positives.sample(n=int((num_sample)*0.5), random_state=1)
         zeros = df[df['label']==0]
-        zeros= zeros.sample(n=int(num_sample), random_state=1)
+        zeros= zeros.sample(n=int(int(num_sample)*0.5), random_state=1)
         frames = [positives, zeros]
         df = pd.concat(frames)
         labels = df['label']
@@ -62,17 +69,52 @@ def main():
         input_train, input_test, labels_train, labels_test = train_test_split(inputs, labels, test_size=0.20, random_state=0)
     elif int(strat) == 2:
         print('\nStratagem 2 chosen.')
+        positives = df[df['label']==1]
+        positives = positives.sample(n=int(int(num_sample)*0.5), random_state=1)
+        zeros = df[df['label']==0]
+        zeros= zeros.sample(n=int(num_sample), random_state=1)
+        frames = [positives, zeros]
+        df = pd.concat(frames)
+        labels = df['label']
+        
+        inputs = df.drop(['frame_number','T1_x','T1_y','label'],1)
+        input_train, input_test, labels_train, labels_test = train_test_split(inputs, labels, test_size=0.20, random_state=0)
+        positives_2 = positives.sample(n=int(int(num_sample)*0.1), random_state=1)
+        zeros_2 = df[df['label']==0]
+        zeros_2= zeros_2.sample(n=int(int(num_sample)*0.9), random_state=1, replace=False)
+        frames_2 = [positives_2, zeros_2]
+        temp_df = pd.concat(frames_2)
+        labels_2 = temp_df['label']
+        
+        inputs_2 = temp_df.drop(['frame_number','T1_x','T1_y','label'],1)
+        input_train_2, input_test, labels_train_2, labels_test = train_test_split(inputs_2, labels_2, test_size=0.20, random_state=0)
+        
     elif int(strat) == 3:
         print('\nStratagem 3 chosen.')
+        positives = df[df['label']==1]
+        positives = positives.sample(n=int(int(num_sample)*0.1), random_state=1)
+        zeros = df[df['label']==0]
+        zeros= zeros.sample(n=int(int(num_sample)*0.9), random_state=1)
+        frames = [positives, zeros]
+        df = pd.concat(frames)
+        labels = df['label']
+        
+        inputs = df.drop(['frame_number','T1_x','T1_y','label'],1)
+        input_train, input_test, labels_train, labels_test = train_test_split(inputs, labels, test_size=0.20, random_state=0)
     else:
         print('\nInvalid stratagem. Exiting program.')
         exit()
+    scale_data = input('\nScale the data? Type "Yes" or "No": ')
+    if scale_data  == "Yes":
+        print('Scaling following features', inputs.columns)
+        input_train = StandardScaler().fit_transform(input_train)
+        input_test = StandardScaler().fit_transform(input_test)
+        
     imp = SimpleImputer(missing_values=np.nan, strategy='mean')
     imp = imp.fit(input_train)
     input_train = imp.transform(input_train)
     input_test = imp.transform(input_test)
     solver_type = input('\nWhich ML solver do we use: ')
-    print(input_train[0])
     clf = MLPClassifier(solver=solver_type, alpha=1e-5, hidden_layer_sizes=(9,10,11,8,), random_state=0, max_iter=20000, shuffle=True)   
     clf.fit(input_train, labels_train)
     predicted = clf.predict(input_test)

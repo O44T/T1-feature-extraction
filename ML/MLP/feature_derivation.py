@@ -22,10 +22,10 @@ import math
 
 
 def P_derivation(datafr, key1, key2, key3, key4):
-    P1 = datafr['T1_x'] -datafr[key1]
-    P2 = datafr['T1_y'] -datafr[key2]
-    P3 = datafr['T1_x'] -datafr[key3]
-    P4 = datafr['T1_y'] -datafr[key4]
+    P1 = datafr[key1] - datafr['T1_x']
+    P2 = datafr[key2] - datafr['T1_y']
+    P3 = datafr[key3] - datafr['T1_x']
+    P4 = datafr[key4] - datafr['T1_y']
     return P1, P2, P3, P4
 
 def length(P1, P2, P3, P4):
@@ -50,16 +50,10 @@ def angle(datafr):
         P1, P2, P3, P4 = P_derivation(datafr,key1,key2,key3,key4)
         temp_df1 = pd.DataFrame({'A1': P1, 'A2': P2})
         temp_df2 = pd.DataFrame({'B1': P3, 'B2': P4})
-        dot_df = temp_df1['A1']*temp_df2['B1'] + temp_df1['A2']*temp_df2['B2']
-        print(dot_df)
-        vec_1, vec_2 = length(P1,P2,P3,P4)
-        print(vec_1)
-        print(vec_2)
-        angle = dot_df / vec_1*vec_2
-        #cos = np.clip(cos, -1, 1)
-        #MyList = dot_df / vec_1*vec_2
-        #angle = np.radians(cos)
-
+        
+        cosang = temp_df1['A1']*temp_df2['B1'] + temp_df1['A2']*temp_df2['B2']
+        sinang = np.linalg.norm(np.cross(temp_df1, temp_df2))
+        angle = np.arctan2(sinang, cosang)  
         if i==0:
             datafr['angle1'] = angle
         elif i == 1:
@@ -69,8 +63,13 @@ def angle(datafr):
         else:
             datafr['angle4'] = angle
         i=i+1
-    
     datafr = datafr.drop(['1_mx','1_my','1_ex','1_ey','2_mx','2_my','2_ex','2_ey','3_mx','3_my','3_ex','3_ey','4_mx','4_my','4_ex','4_ey'], 1)
-    
-    
+    return datafr
+
+def orientation_strategy(datafr):
+    datafr['angle1'] = datafr['orientation'] - datafr['angle1']
+    datafr['angle2'] = datafr['orientation'] - datafr['angle2']
+    datafr['angle3'] = datafr['orientation'] - datafr['angle3']
+    datafr['angle4'] = datafr['orientation'] - datafr['angle4']
+    datafr = datafr.drop(['orientation'],1)
     return datafr
