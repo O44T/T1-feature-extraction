@@ -13,7 +13,7 @@ Frames in *dataset_04_2*: 4001 - 7000
 
 ### Column labels
 
-dataset_04 is a 21-column table containing information of those 4-fold nodes that appear in the foam flow. 
+**dataset_04** is a 21-column table containing information of those 4-fold nodes that appear in the foam flow. 
 The columns are:
     
 <table>
@@ -53,6 +53,29 @@ The 4-fold vertex is label as (x_c,y_c), columns 2 and 3. The codes detect those
 As it was explained before (see [dataset_03](https://github.com/O44T/T1-feature-extraction/tree/master/data/dataset_03 "dataset_03")), curved films are fitted with a circle while a straight line is used for those film whose curvature is null. The following figure shows six different frames where films were plotted. 
 
 <img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_04/sketch/PlotCurvedExample.jpg" width = "900" style="background-color:blue;" /> 
+
+#### Curvature table
+
+**taset_04_curvature**s a 7-column table containing information of the curvature of those points in **dataset_04** using the same order that the points on the film.
+The columns are:
+    
+<table>
+    <thead>
+        <tr>
+            <th>Frame Number</th>
+            <th colspan=2>Vertex</th>
+            <th colspan>Curvature; i = {1,4}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>index</th>
+            <th>x_c</th>
+            <th>y_c</th>
+            <th>Curvature_i</th>
+        </tr>
+    </tbody>
+</table>
 
 #### Orientation
 
