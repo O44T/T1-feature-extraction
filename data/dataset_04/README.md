@@ -56,7 +56,7 @@ As it was explained before (see [dataset_03](https://github.com/O44T/T1-feature-
 
 #### Curvature table
 
-**taset_04_curvature**s a 7-column table containing information of the curvature of those points in **dataset_04** using the same order that the points on the film.
+**dataset_04_curvature** is a 7-column table containing information of the curvature of those points in **dataset_04** using the same order that the points on the film.
 The columns are:
     
 <table>
