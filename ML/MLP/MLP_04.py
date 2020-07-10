@@ -21,6 +21,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import tsne_visualization
 import feature_derivation
+import pca_fitter
 import math
 from scipy import sparse
 
@@ -43,8 +44,8 @@ def main():
         #df = pd.DataFrame({'frame_number':df['frame_number'], 'T1_x': df['T1_x'], 'T1_y': df['T1_y'], 'angles': df['angle1']*df['angle2']*df['angle3']*df['angle4'], 'curvatures': df['cu1']*df['cu2']*df['cu3']*df['cu4']*pow(1000,4), 'chLs': df['chL1']*df['chL2']*df['chL3']*df['chL4'], 'thetas': df['theta1']*df['theta2']*df['theta3']*df['theta4'], 'ALs': df['AL1']*df['AL2']*df['AL3']*df['AL4'], 'orientation': df['orientation'], 'label': df['label']})
         print(df.head())
     elif datafile == 'test_plus':
-        df1 = pd.read_csv('test_start_to_end.txt', sep="   ", header=None, error_bad_lines=False)
-        df2 = pd.read_csv('test_for_mid_points.txt', sep="   ", header=None, error_bad_lines=False)
+        df1 = pd.read_csv('test_start_to_end_updated.txt', sep="   ", header=None, error_bad_lines=False)
+        df2 = pd.read_csv('test_for_mid_point_updated.txt', sep="   ", header=None, error_bad_lines=False)
         df1 = df1.dropna()
         df2 = df2.dropna()
         df1.columns = ['frame_number', 'T1_x', 'T1_y','angle1','angle2','angle3','angle4','cu1','cu2','cu3','cu4','chL1','chL2','chL3','chL4','theta1','theta2','theta3','theta4','AL1','AL2','AL3','AL4','A1','A2','A3','A4','orientation','label']
@@ -70,7 +71,7 @@ def main():
         print(df['label'].mean()*100)
         
         
-        df = df.drop(['cu1','cu2','cu3','cu4','theta1','theta2','theta3','theta4'],1)
+        df = df.drop(['cu1','cu2','cu3','cu4','theta1','theta2','theta3','theta4','mid1','mid2','mid3','mid4','orientation'],1)
         #df = pd.DataFrame({'frame_number':df['frame_number'], 'T1_x': df['T1_x'], 'T1_y': df['T1_y'], 'angles': df['angle1']*df['angle2']*df['angle3']*df['angle4'], 'chLs': df['chL1']*df['chL2']*df['chL3']*df['chL4'], 'ALs': df['AL1']*df['AL2']*df['AL3']*df['AL4'], 'mids': df['mid1']*df['mid2']*df['mid3']*df['mid4'], 'orientation': df['orientation'], 'label': df['label']})
         #print(df.head())
     elif datafile == 'test_start_to_end.txt' or 'test_for_mid_points.txt':
@@ -122,19 +123,25 @@ def main():
     elif int(strat) == 2:
         print('\nStratagem 2 chosen.')
         positives = df[df['label']==1]
-        print(positives.index)
+        
         positives = positives.sample(n=int(int(num_sample)*0.5), random_state=1)
+        print(positives.shape)
         zeros = df[df['label']==0]
-        zeros= zeros.sample(n=int(num_sample), random_state=1)
-        frames = [positives, zeros]
+        
+        zeros_s= zeros.sample(n=int(int(num_sample)*0.5), random_state=1)
+        print(zeros_s.shape)
+        frames = [positives, zeros_s]
         df = pd.concat(frames)
         labels = df['label']
         
         inputs = df.drop(['frame_number','T1_x','T1_y','label'],1)
         input_train, input_test, labels_train, labels_test = train_test_split(inputs, labels, test_size=0.20, random_state=0)
         positives_2 = positives.sample(n=int(int(num_sample)*0.1), random_state=1)
-        zeros_2 = df[df['label']==0]
-        zeros_2= zeros_2.sample(n=int(int(num_sample)*0.9), random_state=1, replace=False)
+        print(positives_2.shape)
+        #zeros_2 = df['label']
+        #print(zeros_2.shape)
+        zeros_2= zeros.sample(n=int(int(num_sample)*0.9), random_state=1, replace=False)
+        print(zeros_2.shape)
         frames_2 = [positives_2, zeros_2]
         temp_df = pd.concat(frames_2)
         labels_2 = temp_df['label']
@@ -167,6 +174,7 @@ def main():
     while i < 2:
         if i == 0:
             print('\nRunning the model with raw data (no scaling)...')
+            print('Train set size:', input_train.shape)
         #9,10,11,8,
         if i != 0:
             do_pca = input('Do the PCA? Type "Yes" or "No": ')
@@ -187,7 +195,7 @@ def main():
                 #    np.savetxt(r'C:\Users\oskar\eclipse-workspace\fEX\T1-feature-extraction-master\pca_data_test1.txt', finalDf, fmt='%d', delimiter=' ')
                 print("\n------------------------------------------------------------")
                 print("\nNumber of features in the original data: ",pca.n_features_)
-                #print(pd.DataFrame(pca.components_.transpose(),index=['angle1','angle2','angle3','angle4','chL1','chL2','chL3','chL4','AL1','AL2','AL3','AL4','A1','A2','A3','A4','mid1','mid2','mid3','mid4','orientation'],columns = ['PC-1','PC-2']))
+                print(pd.DataFrame(pca.components_.transpose(),index=['angle1','angle2','angle3','angle4','cu1','cu2','cu3','cu4','chL1','chL2','chL3','chL4','theta1','theta2','theta3','theta4','AL1','AL2','AL3','AL4','A1','A2','A3','A4','orientation','mid1','mid2','mid3','mid4'],columns = ['PCA-1','PCA-2']))
                 print("Data variance ratio after PCA tranform: ",pca.explained_variance_ratio_)
                 print("\n------------------------------------------------------------")
                 vis_pca = input('\nVisualize PCA components? Type "Yes" or "No": ')
@@ -213,8 +221,11 @@ def main():
                     ax.legend(targets)
                     ax.grid()
                     plt.show()
+                    fit_pca = input('\nRun the MLP model with PCA fitted data? Type "Yes" or "No": ')
+                    if fit_pca == "Yes":
+                        pca_fitter.pca_model(pca, input_train, input_test, labels_train, labels_test, solver_type)
                     print('\nContinuing with the scaled fitting process..')
-        clf = MLPClassifier(solver=solver_type, alpha=1e-5, hidden_layer_sizes=(9,10,2), random_state=0, max_iter=20000, shuffle=True)   
+        clf = MLPClassifier(solver=solver_type, alpha=1e-5, hidden_layer_sizes=(12,8,6,), random_state=0, max_iter=20000, shuffle=True)   
         clf.fit(input_train, labels_train)
         predicted = clf.predict(input_test)
         conf_matrix = metrics.confusion_matrix(labels_test,predicted)
