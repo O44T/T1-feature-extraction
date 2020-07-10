@@ -54,6 +54,25 @@ def main():
         df['mid2'] = df2['angle2']
         df['mid3'] = df2['angle3']
         df['mid4'] = df2['angle4']
+    elif datafile == 'test_10072020_normal.txt':
+        df1 = pd.read_csv('test_10072020_normal.txt', delimiter="   ", header=None, error_bad_lines=False)
+        df2 = pd.read_csv('test_10072020_curvature.txt', delimiter="   ", header=None, error_bad_lines=False)
+        df1 = df1.dropna()
+        df2 = df2.dropna()
+        
+        df1.columns = ['frame_number', 'T1_x', 'T1_y','angle1','angle2','angle3','angle4','cu1','cu2','cu3','cu4','chL1','chL2','chL3','chL4','theta1','theta2','theta3','theta4','AL1','AL2','AL3','AL4','A1','A2','A3','A4','orientation','label']
+        df2.columns = ['frame_number', 'T1_x', 'T1_y','angle1','angle2','angle3','angle4','cu1','cu2','cu3','cu4','chL1','chL2','chL3','chL4','theta1','theta2','theta3','theta4','AL1','AL2','AL3','AL4','A1','A2','A3','A4','orientation','label']
+        df = df1
+        df['mid1'] = df2['angle1']
+        df['mid2'] = df2['angle2']
+        df['mid3'] = df2['angle3']
+        df['mid4'] = df2['angle4']
+        print(df['label'].mean()*100)
+        
+        
+        df = df.drop(['cu1','cu2','cu3','cu4','theta1','theta2','theta3','theta4'],1)
+        #df = pd.DataFrame({'frame_number':df['frame_number'], 'T1_x': df['T1_x'], 'T1_y': df['T1_y'], 'angles': df['angle1']*df['angle2']*df['angle3']*df['angle4'], 'chLs': df['chL1']*df['chL2']*df['chL3']*df['chL4'], 'ALs': df['AL1']*df['AL2']*df['AL3']*df['AL4'], 'mids': df['mid1']*df['mid2']*df['mid3']*df['mid4'], 'orientation': df['orientation'], 'label': df['label']})
+        #print(df.head())
     elif datafile == 'test_start_to_end.txt' or 'test_for_mid_points.txt':
         df.columns = ['frame_number', 'T1_x', 'T1_y','angle1','angle2','angle3','angle4','cu1','cu2','cu3','cu4','chL1','chL2','chL3','chL4','theta1','theta2','theta3','theta4','AL1','AL2','AL3','AL4','A1','A2','A3','A4','orientation','label']
         #df = pd.DataFrame({'frame_number':df['frame_number'], 'T1_x': df['T1_x'], 'T1_y': df['T1_y'], 'angles': df['angle1']*df['angle2']*df['angle3']*df['angle4'], 'curvatures': df['cu1']*df['cu2']*df['cu3']*df['cu4'], 'chLs': df['chL1']*df['chL2']*df['chL3']*df['chL4'], 'thetas': df['theta1']*df['theta2']*df['theta3']*df['theta4'], 'ALs': df['AL1']*df['AL2']*df['AL3']*df['AL4'], 'As': df['A1']*df['A2']*df['A3']*df['A4'], 'orientation': df['orientation'], 'label': df['label']})
@@ -168,7 +187,7 @@ def main():
                 #    np.savetxt(r'C:\Users\oskar\eclipse-workspace\fEX\T1-feature-extraction-master\pca_data_test1.txt', finalDf, fmt='%d', delimiter=' ')
                 print("\n------------------------------------------------------------")
                 print("\nNumber of features in the original data: ",pca.n_features_)
-                print(pd.DataFrame(pca.components_.transpose(),index=['angle1','angle2','angle3','angle4','cu1','cu2','cu3','cu4','chL1','chL2','chL3','chL4','theta1','theta2','theta3','theta4','AL1','AL2','AL3','AL4','A1','A2','A3','A4','orientation'],columns = ['PC-1','PC-2']))
+                #print(pd.DataFrame(pca.components_.transpose(),index=['angle1','angle2','angle3','angle4','chL1','chL2','chL3','chL4','AL1','AL2','AL3','AL4','A1','A2','A3','A4','mid1','mid2','mid3','mid4','orientation'],columns = ['PC-1','PC-2']))
                 print("Data variance ratio after PCA tranform: ",pca.explained_variance_ratio_)
                 print("\n------------------------------------------------------------")
                 vis_pca = input('\nVisualize PCA components? Type "Yes" or "No": ')
@@ -194,6 +213,7 @@ def main():
                     ax.legend(targets)
                     ax.grid()
                     plt.show()
+                    print('\nContinuing with the scaled fitting process..')
         clf = MLPClassifier(solver=solver_type, alpha=1e-5, hidden_layer_sizes=(9,10,2), random_state=0, max_iter=20000, shuffle=True)   
         clf.fit(input_train, labels_train)
         predicted = clf.predict(input_test)
