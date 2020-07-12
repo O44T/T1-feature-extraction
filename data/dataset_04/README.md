@@ -5,7 +5,7 @@
 Total number of frames video: 13777 
 
 Frames in *dataset_04_1*: 20 - 4000  
-Frames in *dataset_04_2*: 4001 - 7000
+Frames in *dataset_04_2*: 4001 - 7000    
 Frames in *dataset_04_3*: 7001 - 9000
 
 **Total number of positive T1 events:** 10170
