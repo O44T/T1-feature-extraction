@@ -6,6 +6,9 @@ Total number of frames video: 13777
 
 Frames in *dataset_04_1*: 20 - 4000  
 Frames in *dataset_04_2*: 4001 - 7000
+Frames in *dataset_04_3*: 7001 - 9000
+
+**Total number of positive T1 events:** 10170
 
 **Images:** Check folder [data/dataset_02](https://github.com/O44T/T1-feature-extraction/tree/master/data/dataset_02 "Images"). There are 9 parts: images.part%.rar. Frames 20 - 1993
 
