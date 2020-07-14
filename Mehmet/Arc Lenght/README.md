@@ -2,7 +2,7 @@ This file contains the scripts for Arc Lenghts(L), Chord lenght(d) and subtendin
 
 The order of columns are as follows;
 
-frame name, x0,y0, alpha1-alpha4,curvature1-curvature4,chord_lenght1-chord_lenght4,teta1-teta4,Arclenght1-Arclenght4,Area1-Area4, orientation,T1_event_yes_or_no
+frame name, x0,y0, alpha1-alpha4,curvature1-curvature4,chord_lenght1-chord_lenght4,d_total,teta1-teta4,Arclenght1-Arclenght4,Area1-Area4,Distance_between_two_end_points1-Distance_between_two_end_points4,Area_total1-Area_total4,h1-h4, orientation,T1_event_yes_or_no
 
 
 
