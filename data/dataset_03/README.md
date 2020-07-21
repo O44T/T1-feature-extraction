@@ -4,8 +4,9 @@
 
 Total number of frames video: 13777 
 
-Frames in *dataset_03*: 20 - 1993   
-Frames in *dataset_03_1*: 20 - 4000
+Frames in *dataset_03_1*: 20 - 4000  
+Frames in *dataset_03_2*: 4001 - 7000    
+Frames in *dataset_03_3*: 7001 - 9000
 
 **Images:** Check folder [data/dataset_02](https://github.com/O44T/T1-feature-extraction/tree/master/data/dataset_02 "Images"). There are 9 parts: images.part%.rar. Frames 20 - 1993
 
