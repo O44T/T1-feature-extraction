@@ -1,7 +1,4 @@
-new data set 
-
-
-## dataset_04: points-on-film
+## dataset_05: derived features
 
 **Video:** Exp_0295 
 
@@ -19,7 +16,7 @@ Frames in *dataset_04_3*: 7001 - 9000
 
 ### Column labels
 
-**dataset_04** is a 21-column table containing information of those 4-fold nodes that appear in the foam flow. 
+**dataset_05** is a 28-column table containing information of those 4-fold nodes that appear in the foam flow. 
 The columns are:
     
 <table>
@@ -27,9 +24,14 @@ The columns are:
         <tr>
             <th>Frame Number</th>
             <th colspan=2>Vertex</th>
-            <th colspan=4>Nodes; i = {1,4}</th>
-            <th>Orientation</th>
-            <th>T1 event</th>
+            <th colspan=1>Alpha; i = {1,4}</th>
+            <th colspan=1>&zeta;; i = {1,4}</th>
+            <th colspan=1>Distance end points; i = {1,4}</th>
+            <th colspan=1>Theta; i = {1,4}</th>
+            <th colspan=1>ArcLength; i = {1,4}</th>
+            <th colspan=1>Area below film; i = {1,4}</th>
+            <th colspan=1>; i = {1,4}</th>
+            <th>Total area</th>
         </tr>
     </thead>
     <tbody>
@@ -42,6 +44,8 @@ The columns are:
             <th>x_{e,i}</th>
             <th>y_{e,i}</th>
             <th>&beta;</th>
+            <th>yes or no</th>
+            <th>yes or no</th>
             <th>yes or no</th>
         </tr>
     </tbody>
