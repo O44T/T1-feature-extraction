@@ -18,7 +18,7 @@ Given that there is no connection between variables, some variables hasn't been 
 
 ### Column labels
 
-**dataset_05** is a 28-column table containing information of those 4-fold nodes that appear in the foam flow. 
+**dataset_05** is a 34-column table containing information of those 4-fold nodes that appear in the foam flow. 
 The columns are:
     
 <table>
