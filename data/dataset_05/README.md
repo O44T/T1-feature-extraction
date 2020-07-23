@@ -28,7 +28,7 @@ The columns are:
             <th colspan=1>Area ; col = 8</th>
             <th colspan=1>Side ; i = {1,4} ; col = 9-12</th>
             <th colspan=1>Perimeter ; col = 13</th>
-            <th colspan=1>ArcLength; i = {1,4}</th>
+            <th colspan=1>&zeta; ; i = {1,4} ; col = 14-17</th>
             <th colspan=1>Area below film; i = {1,4}</th>
             <th colspan=1>; i = {1,4}</th>
             <th>Total area</th>
@@ -43,7 +43,7 @@ The columns are:
             <th>A</th>
             <th>d_{e,i}</th>
             <th>P</th>
-            <th>&beta;</th>
+            <th>&zeta;</th>
             <th>yes or no</th>
             <th>yes or no</th>
             <th>yes or no</th>
@@ -68,6 +68,12 @@ Figure shows the polygon for each 4-fold vertex and **columns 8-13** contain geo
 Figure shows the definition of &zeta;, i.e. the angle between **two consequtive films**. **Columns 14-17** contain the four angles. It has been calculate using the dot product, but note that it is equal to &zeta;\_i = &alpha;\_{i+1} - &alpha;\_{i}. 
 
 <img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_05/sketch/Fig_zeta.png" width = "500" style="background-color:blue;" /> 
+
+#### Distances: chord, theta and arc length
+
+Figure shows the definition of &zeta;, i.e. the angle between **two consequtive films**. **Columns 14-17** contain the four angles. It has been calculate using the dot product, but note that it is equal to &zeta;\_i = &alpha;\_{i+1} - &alpha;\_{i}. 
+
+<img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_05/sketch/Fig_Length.png" width = "500" style="background-color:blue;" /> 
 
 #### Orientation
 
