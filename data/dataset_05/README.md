@@ -4,6 +4,8 @@
 
 Total number of frames video: 13777 
 
+The variables listed below are calculated using end and middle points. Then there are one set of file named *end* and other named *mid*, respectively.
+
 Frames in *dataset_05_1*: 20 - 4000  
 Frames in *dataset_05_2*: 4001 - 7000    
 Frames in *dataset_05_3*: 7001 - 9000
@@ -11,8 +13,6 @@ Frames in *dataset_05_3*: 7001 - 9000
 **Total number of positive T1 events:** 10170
 
 **Images:** Check folder [data/dataset_02](https://github.com/O44T/T1-feature-extraction/tree/master/data/dataset_02 "Images"). There are 9 parts: images.part%.rar. Frames 20 - 1993
-
-<img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_03/sketch/AllInfo.jpg" width = "400"><img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_03/sketch/VectorField.jpg" width = "400">
 
 ### Column labels
 
@@ -24,14 +24,16 @@ The columns are:
         <tr>
             <th>Frame Number</th>
             <th colspan=2>Vertex ; col = 2-3</th>
-            <th colspan=1>&alpha; ; i = {1,4} ; col = 4-7</th>
+            <th colspan=1>&alpha; ; col = 4-7</th>
             <th colspan=1>Area ; col = 8</th>
-            <th colspan=1>Side ; i = {1,4} ; col = 9-12</th>
+            <th colspan=1>Side ; col = 9-12</th>
             <th colspan=1>Perimeter ; col = 13</th>
-            <th colspan=1>&zeta; ; i = {1,4} ; col = 14-17</th>
-            <th colspan=1>Area below film; i = {1,4}</th>
-            <th colspan=1>; i = {1,4}</th>
-            <th>Total area</th>
+            <th colspan=1>&zeta; ; col = 14-17</th>
+            <th colspan=1>Length ; col = 18-21</th>
+            <th colspan=1>Angle ; col = 22-25</th>
+            <th colspan=1>Arc Length ; col = 25-29</th>
+            <th colspan=1>Area film ; col = 30-33</th>
+            <th colspan=1>T1 ; col = 34</th>
         </tr>
     </thead>
     <tbody>
@@ -44,8 +46,10 @@ The columns are:
             <th>d_{e,i}</th>
             <th>P</th>
             <th>&zeta;</th>
-            <th>yes or no</th>
-            <th>yes or no</th>
+            <th>&ell;</th>
+            <th>&theta;</th>
+            <th>s</th>
+            <th>a_f</th>
             <th>yes or no</th>
         </tr>
     </tbody>
@@ -77,9 +81,9 @@ In this section, **Columns 18-29** are explained. **Columns 18-21** are the dist
 
 #### Area between film and chord
 
-Using the four bubbles that close the central vertex, the eigenvectors are calculated to determine the major axis. The orientation is defined according to the direction of the major axis with respect to the [velocity field](https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_03/sketch/VectorField.jpg). The angle between those two vectors is <th>&beta;</th>.
+**Columns 30-33** are the area between the film and the circle chord &ell;, the green sector shown in the figure below. If the film is straight, the area is equal to zero. 
 
-<img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_05/sketch/Fig_Length.png" width = "700">
+<img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_05/sketch/Fig_AreaFilm.png" width = "500">
 
 #### T1 event 
 
