@@ -77,7 +77,7 @@ Figure shows the definition of &zeta;, i.e. the angle between **two consequtive 
 
 #### Lengths: chord &ell;, theta &theta; and arc length s
 
-In this section, **Columns 18-29** are explained. **Columns 18-21** are the distance between the vertex and the end or middle points (it depends on the file name), as shown in figure named &ell;. If the film is curved, the length &ell; is equivalent to the circle chord. **Columns 22-25** are the angle &theta; defined in the Figure below. Finally, **columns 26-29** are the arc length **s**, length of the film. When the film is straight, the arc length is the chord, i.e. s = &ell;.
+In this section, **Columns 18-29** are explained. **Columns 18-21** are the distance between the vertex and the end or middle points (it depends on the file name), as shown in figure named &ell;. If the film is curved, the length &ell; is equivalent to the circle chord. **Columns 22-25** are the angle &theta; defined in the Figure below. Finally, **columns 26-29** are the arc length **s** = R&theta;, length of the film. When the film is straight, the arc length is the chord, i.e. s = &ell;.
 
 <img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_05/sketch/Fig_Length.png" width = "700" style="background-color:blue;" /> 
 
