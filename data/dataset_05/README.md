@@ -6,11 +6,13 @@ Total number of frames video: 13777
 
 The variables listed below are calculated using end and middle points. Then there are one set of file named *end* and other named *mid*, respectively.
 
-Frames in *dataset_05_1*: 20 - 4000  
+Frames in *dataset_05_1*: 20 - 4000 = part1 = 20 - 2000 ; part2 = 2001 - 4000  
 Frames in *dataset_05_2*: 4001 - 7000    
 Frames in *dataset_05_3*: 7001 - 9000
 
 **Total number of positive T1 events:** 10170
+
+Given that there is no connection between variables, some variables hasn't been included in the current table. Curvature and orientation can be found in [data/dataset_03](https://github.com/O44T/T1-feature-extraction/tree/master/data/dataset_03 "Curvature") and [data/dataset_04](https://github.com/O44T/T1-feature-extraction/tree/master/data/dataset_04 "Orientation"). 
 
 **Images:** Check folder [data/dataset_02](https://github.com/O44T/T1-feature-extraction/tree/master/data/dataset_02 "Images"). There are 9 parts: images.part%.rar. Frames 20 - 1993
 
