@@ -6,7 +6,7 @@ Total number of frames video: 13777
 
 The variables listed below are calculated using end and middle points. Then there are one set of file named *end* and other named *mid*, respectively.
 
-Frames in *dataset_05_1*: 20 - 4000 = part1 = 20 - 2000 ; part2 = 2001 - 4000  
+Frames in *dataset_05_1*: 20 - 4000 // part1 = 20 - 2000 ; part2 = 2001 - 4000  
 Frames in *dataset_05_2*: 4001 - 7000    
 Frames in *dataset_05_3*: 7001 - 9000
 
