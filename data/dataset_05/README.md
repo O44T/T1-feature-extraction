@@ -69,20 +69,20 @@ Figure shows the definition of &zeta;, i.e. the angle between **two consequtive 
 
 <img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_05/sketch/Fig_zeta.png" width = "500" style="background-color:blue;" /> 
 
-#### Distances: chord, theta and arc length
+#### Lengths: chord &ell;, theta &theta; and arc length s
 
-Figure shows the definition of &zeta;, i.e. the angle between **two consequtive films**. **Columns 14-17** contain the four angles. It has been calculate using the dot product, but note that it is equal to &zeta;\_i = &alpha;\_{i+1} - &alpha;\_{i}. 
+In this section, **Columns 18-29** are explained. **Columns 18-21** are the distance between the vertex and the end or middle points (it depends on the file name), as shown in figure named &ell;. If the film is curved, the length &ell; is equivalent to the circle chord. **Columns 22-25** are the angle &theta; defined in the Figure below. Finally, **columns 26-29** are the arc length **s**, length of the film. When the film is straight, the arc length is the chord, i.e. s = &ell;.
 
-<img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_05/sketch/Fig_Length.png" width = "500" style="background-color:blue;" /> 
+<img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_05/sketch/Fig_Length.png" width = "700" style="background-color:blue;" /> 
 
-#### Orientation
+#### Area between film and chord
 
 Using the four bubbles that close the central vertex, the eigenvectors are calculated to determine the major axis. The orientation is defined according to the direction of the major axis with respect to the [velocity field](https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_03/sketch/VectorField.jpg). The angle between those two vectors is <th>&beta;</th>.
 
-<img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_03/sketch/Orientation_Sketch.png" width = "700">
+<img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_05/sketch/Fig_Length.png" width = "700">
 
 #### T1 event 
 
-The last column in the table points out whether or not the 4-fold vertex is a T1 event. 
+The last column, **column 34**, in the table points out whether or not the 4-fold vertex is a T1 event. 
 
     T1 event yes = 1 | T1 event no = 0
