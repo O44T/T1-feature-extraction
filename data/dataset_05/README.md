@@ -4,9 +4,9 @@
 
 Total number of frames video: 13777 
 
-Frames in *dataset_04_1*: 20 - 4000  
-Frames in *dataset_04_2*: 4001 - 7000    
-Frames in *dataset_04_3*: 7001 - 9000
+Frames in *dataset_05_1*: 20 - 4000  
+Frames in *dataset_05_2*: 4001 - 7000    
+Frames in *dataset_05_3*: 7001 - 9000
 
 **Total number of positive T1 events:** 10170
 
@@ -23,11 +23,11 @@ The columns are:
     <thead>
         <tr>
             <th>Frame Number</th>
-            <th colspan=2>Vertex</th>
-            <th colspan=1>Alpha; i = {1,4}</th>
-            <th colspan=1>&zeta;; i = {1,4}</th>
-            <th colspan=1>Distance end points; i = {1,4}</th>
-            <th colspan=1>Theta; i = {1,4}</th>
+            <th colspan=2>Vertex ; col = 2-3</th>
+            <th colspan=1>&alpha; ; i = {1,4} ; col = 4-7</th>
+            <th colspan=1>Area ; col = 8</th>
+            <th colspan=1>Side ; i = {1,4} ; col = 9-12</th>
+            <th colspan=1>Perimeter ; col = 13</th>
             <th colspan=1>ArcLength; i = {1,4}</th>
             <th colspan=1>Area below film; i = {1,4}</th>
             <th colspan=1>; i = {1,4}</th>
@@ -39,10 +39,10 @@ The columns are:
             <th>index</th>
             <th>x_c</th>
             <th>y_c</th>
-            <th>x_{m,i}</th>
-            <th>y_{m,i}</th>
-            <th>x_{e,i}</th>
-            <th>y_{e,i}</th>
+            <th>&alpha;_i</th>
+            <th>A</th>
+            <th>d_{e,i}</th>
+            <th>P</th>
             <th>&beta;</th>
             <th>yes or no</th>
             <th>yes or no</th>
@@ -51,41 +51,23 @@ The columns are:
     </tbody>
 </table>
 
-#### Nodes
+#### Nodes and angles 
 
-For each film 
-The 4-fold vertex is label as (x_c,y_c), columns 2 and 3. The codes detect those four films at the 4-fold node (see Fig. a). Then, there are two dots for each film, one at the middle (x_m,y_m) and the other at the end of the film (x_e,y_e) (see Fig. b). The groups of 4 values (x_m,y_m,x_e,y_e) are concatenated next to each other. As a result, columns from 4 to 19 are the nodes on the film. 
+The 4-fold vertex is label as (x_c,y_c), **columns 2 and 3**. **Columns 4-7** are the angles of each film, positive 0<= &alpha; <360. Each angle appears on the table moving clockwise, as the figure shows. The angles are in **consecutive order**. The order of any derivated variable is the same: **clockwise**. 
 
-<img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_04/sketch/Dots.png" width = "700" style="background-color:blue;" /> 
+<img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_05/sketch/Fig_AnglesOrder.png" width = "500" style="background-color:blue;" /> 
 
-##### Plot films: example 
+#### Polygon 
 
-As it was explained before (see [dataset_03](https://github.com/O44T/T1-feature-extraction/tree/master/data/dataset_03 "dataset_03")), curved films are fitted with a circle while a straight line is used for those film whose curvature is null. The following figure shows six different frames where films were plotted. 
+Figure shows the polygon for each 4-fold vertex and **columns 8-13** contain geometric information. **Column 8** is the polygon area, the transparent area in the figure below. **Columns 9-12** are the distance between two consequtive end points. In other words, they are the length of each side of the polygon. Finally, **column 13** is the perimeter of the polygon, i.e., P = d_{e,1} + d_{e,2} + d_{e,3} + d_{e,4}. 
 
-<img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_04/sketch/PlotCurvedExample.jpg" width = "900" style="background-color:blue;" /> 
+<img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_05/sketch/Fig_Polygon.png" width = "500" style="background-color:blue;" /> 
 
-#### Curvature table
+#### Angles between films &zeta; 
 
-**dataset_04_curvature** is a 7-column table containing information of the curvature of those points in **dataset_04** using the same order that the points on the film.
-The columns are:
-    
-<table>
-    <thead>
-        <tr>
-            <th>Frame Number</th>
-            <th colspan=2>Vertex</th>
-            <th colspan>Curvature; i = {1,4}</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th>index</th>
-            <th>x_c</th>
-            <th>y_c</th>
-            <th>Curvature_i</th>
-        </tr>
-    </tbody>
-</table>
+Figure shows the definition of &zeta;, i.e. the angle between **two consequtive films**. **Columns 14-17** contain the four angles. It has been calculate using the dot product, but note that it is equal to &zeta;\_i = &alpha;\_{i+1} - &alpha;\_{i}. 
+
+<img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_05/sketch/Fig_zeta.png" width = "500" style="background-color:blue;" /> 
 
 #### Orientation
 
