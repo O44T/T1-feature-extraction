@@ -6,7 +6,7 @@ Total number of frames video: 13777
 
 Frames in *dataset_03_1*: 20 - 4000  
 Frames in *dataset_03_2*: 4001 - 7000    
-Frames in *dataset_03_3*: 7001 - 9000
+Frames in *dataset_03_3*: 7001 - 9000  
 Frames in *dataset_03_4*: 9001 - 11000  
 Frames in *dataset_03_5*: 11001 - 13776  
 
