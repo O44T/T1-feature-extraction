@@ -73,7 +73,7 @@ Figure shows the polygon for each 4-fold vertex and **columns 8-13** contain geo
 
 #### Angles between films &zeta; 
 
-Figure shows the definition of &zeta;, i.e. the angle between **two consequtive films**. **Columns 14-17** contain the four angles. It has been calculate using the dot product, but note that it is equal to &zeta;\_i = &alpha;\_{i+1} - &alpha;\_{i}. 
+Figure shows the definition of &zeta;, i.e. the angle between **two consecutive films**. **Columns 14-17** contain the four angles. It has been calculate using the dot product, but note that it is equal to &zeta;\_i = &alpha;\_{i+1} - &alpha;\_{i}. 
 
 <img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_05/sketch/Fig_zeta.png" width = "500" style="background-color:blue;" /> 
 
