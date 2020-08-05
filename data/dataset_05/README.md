@@ -12,7 +12,7 @@ Frames in *dataset_05_3*: 7001 - 9000
 Frames in *dataset_05_4*: 9001 - 11000  
 Frames in *dataset_05_5*: 11001 - 13776 
 
-**Total number of positive T1 events:** 10170
+**Total number of positive T1 events:** 15811
 
 Given that there is no connection between variables, some variables hasn't been included in the current table. Curvature and orientation can be found in [data/dataset_03](https://github.com/O44T/T1-feature-extraction/tree/master/data/dataset_03 "Curvature") and [data/dataset_04](https://github.com/O44T/T1-feature-extraction/tree/master/data/dataset_04 "Orientation"). 
 
