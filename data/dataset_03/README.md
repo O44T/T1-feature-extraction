@@ -1,10 +1,14 @@
-## Information on dataset_03
+## dataset_03: angle, curvature and orientation
 
 **Video:** Exp_0295 
 
 Total number of frames video: 13777 
 
-Total number of frames in *dataset_03*: 1973
+Frames in *dataset_03_1*: 20 - 4000  
+Frames in *dataset_03_2*: 4001 - 7000    
+Frames in *dataset_03_3*: 7001 - 9000  
+Frames in *dataset_03_4*: 9001 - 11000  
+Frames in *dataset_03_5*: 11001 - 13776  
 
 **Images:** Check folder [data/dataset_02](https://github.com/O44T/T1-feature-extraction/tree/master/data/dataset_02 "Images"). There are 9 parts: images.part%.rar. Frames 20 - 1993
 
@@ -50,7 +54,9 @@ The columns are:
 Each 4-fold vertex is conected to four films. For each of those four films, their angles and curvatures were calculated. 
 The angle is defined as the arctan between the central point and each of the four nodes (blue dots). The film curvature is determined as the osculating circle using the previous two points and the central point in the film.
 
-<img src = "https://raw.githubusercontent.com/O44T/T1-feature-extraction/master/data/dataset_03/sketch/4FoldVertex.png" width = "200">
+<img src = "https://raw.githubusercontent.com/O44T/T1-feature-extraction/master/data/dataset_03/sketch/4FoldVertex.png" width = "200" style="background-color:blue;" />  <img src = "https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_03/sketch/FilmsCurvature.png" width = "200">
+
+![Curvature Plot](https://github.com/O44T/T1-feature-extraction/blob/master/data/dataset_03/sketch/testAnimated.gif)
 
 #### Orientation
 

@@ -1,0 +1,6 @@
+Case 1 contains all angle pairs with flow coefficient taken into consideration.
+
+Cases are: [0,1],[0,2],[0,3],[1,2],[1,3],[2,3], with according images: 1,2,3,4,5,6
+
+Plot points are derived by subtracting angle points from flow coefficients.
+
