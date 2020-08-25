@@ -1,7 +1,18 @@
 import numpy as np
 import tensorflow as tf
-from tensorflow.keras import datasets, layers, models
 import matplotlib.pyplot as plt
+
+
+# print(tf.python.client.device_lib.list_local_devices())
+# sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
+
+from tensorflow.keras import datasets, layers, models
+# from tensorflow.keras import backend as K
+# K.tensorflow_backend._get_available_gpus()
+
+print("Num GPUs available: ", len(tf.config.experimental.list_physical_devices('GPU')))
+
+# quit()
 
 
 train_images = np.load("train/Xdata.npy") / 255.
@@ -38,4 +49,4 @@ model.summary()
 
 model.compile(optimizer="adam", loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True), metrics=["accuracy"])
 
-history = model.fit(new_train_images, train_labels, epochs=50, validation_data=(new_test_images, test_labels))
+history = model.fit(new_train_images, train_labels, batch_size=500, epochs=10000, validation_data=(new_test_images, test_labels))
